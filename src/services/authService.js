@@ -78,16 +78,18 @@ export const checkLoginStatus = async (setToken) => {
 };
 
 // Register function
-export const registerUser = async (registerForm, setToken) => {
+export const registerUser = async (registerForm) => {
     try {
         const response = await API.post("/register", registerForm);
         if (response.data.accessToken) {
             setAccessToken(response.data.accessToken);
-            setToken(response.data.accessToken);
         }
         return response.data;
     } catch (error) {
-        throw error.response?.data?.message;
+        const errorMessage =
+            error?.response?.data?.message || error.message || "Registration failed. Please try again.";
+        console.error("Registration error:", errorMessage);
+        throw new Error(errorMessage);
     }
 };
 
