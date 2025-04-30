@@ -1,0 +1,85 @@
+.auth-section {
+    width: 100%;
+    margin-top: 5vh;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.auth-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.auth-section .auth-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    background-color: #266CA9;
+    color: #FFF;
+    border: none;
+    transition: all ease-in-out 0.1s;
+    cursor: pointer;
+    margin-right: 8px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.auth-option, .auth-field{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.auth-option a{
+    color: #266CA9;
+    text-decoration: underline;
+}
+
+.auth-field{
+    border: 1px solid #D1D5DB;
+    background-color: #FFFFFF;
+    padding: 5px 0 5px 15px;
+    border-radius: 8px;
+}
+
+.auth-field input {
+    width: 250px;
+    height: 40px;
+    outline: none;
+    border: none;
+}
+
+.auth-field .auth-icons {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 15px;
+    border-left: 1px solid #D1D5DB;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+@media screen and (max-width: 600px) {
+    .auth-section{
+        font-size: 0.8rem;
+    }
+
+    .auth-field input {
+        width: 220px;
+    }    
+}
