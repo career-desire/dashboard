@@ -1,0 +1,28 @@
+.not-found {
+    width: 100%;
+    height: calc(100vh - 150px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.not-found p {
+    text-decoration: underline;
+}
+
+.not-found .not-found-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.not-found .not-found-number {
+    font-size: 5rem;
+}
+
+.not-found a {
+    color: #266CA9;
+}
