@@ -33,18 +33,23 @@ export const AuthProvider = ({ children }) => {
   const register = async (registerForm) => {
     try {
       const registerData = await registerUser(registerForm);
+
       if (registerData?.accessToken) {
         setToken(registerData.accessToken);
         setUser(registerData.user);
-        setAlert("success")
-        setAlertMessage("Register successfully!")
+        setAlert("success");
+        setAlertMessage("Registered successfully!");
         navigate("/");
       }
     } catch (error) {
-      console.error("Registration failed:", error.message || error);
-      setAlert("failed")
-      setAlertMessage(`${error.message || error}!`)
-      throw new Error(error.message || "Registration failed. Please try again.");
+      console.error("Registration error:", error);
+
+      const errorMessage =
+        error?.response?.data?.message || error.message || "Registration failed. Please try again.";
+
+      setAlert("failed");
+      setAlertMessage(errorMessage);
+      throw new Error(errorMessage);
     }
   };
 
