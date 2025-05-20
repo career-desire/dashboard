@@ -47,7 +47,7 @@ export const AuthProvider = ({ children }) => {
       const errorMessage =
         error?.response?.data?.message || error.message || "Registration failed. Please try again.";
 
-      setAlert("failed");
+      setAlert("failure");
       setAlertMessage(errorMessage);
       throw new Error(errorMessage);
     }
@@ -67,9 +67,8 @@ export const AuthProvider = ({ children }) => {
       }
     } catch (error) {
       console.error("Login failed:", error.message || error);
-      setAlert("failed")
+      setAlert("failure")
       setAlertMessage(`${error.message || error}!`)
-      console.log(error)
       throw new Error(error.message || "Login failed. Please try again.");
     }
   };
@@ -83,7 +82,7 @@ export const AuthProvider = ({ children }) => {
       setAlertMessage("Logout successfully!");
       navigate("/");
     } catch (error) {
-      setAlert("failed")
+      setAlert("failure")
       setAlertMessage(`${error.message || error}!`)
     }
   };

@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheck, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faTriangleExclamation, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { AlertContext } from '../context/AlertContext';
 import '../styles/Alert.css';
 
@@ -20,15 +20,22 @@ function Alert() {
     return (
         <>
             {alert && (
-                <div className='alert-container slide-in-blurred-bottom'>
-                    {alert === "success" ? (
+                <div className='alert-container slide-in-blurred-top'>
+                    {alert === "success" && (
                         <div className='success-alert alert'>
                             <FontAwesomeIcon icon={faCheck} />
                             <p>{alertMessage}</p>
                         </div>
-                    ) : (
+                    )}
+                    {alert === "failure" && (
                         <div className='failure-alert alert'>
                             <FontAwesomeIcon icon={faXmark} />
+                            <p>{alertMessage}</p>
+                        </div>
+                    )}
+                    {alert === "warn" && (
+                        <div className='warn-alert alert'>
+                            <FontAwesomeIcon icon={faTriangleExclamation} />
                             <p>{alertMessage}</p>
                         </div>
                     )}
