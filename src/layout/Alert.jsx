@@ -27,8 +27,8 @@ function Alert() {
                             <p>{alertMessage}</p>
                         </div>
                     )}
-                    {alert === "failure" && (
-                        <div className='failure-alert alert'>
+                    {alert === "failed" && (
+                        <div className='failed-alert alert'>
                             <FontAwesomeIcon icon={faXmark} />
                             <p>{alertMessage}</p>
                         </div>

@@ -49,7 +49,7 @@ const Home = () => {
         } catch (error) {
             console.error("Error deleting resume:", error);
             setAlertMessage("Failed to delete resume");
-            setAlert("failure");
+            setAlert("failed");
         }
 
         setResumeToDelete(null);
@@ -67,7 +67,7 @@ const Home = () => {
         } catch (error) {
             console.error("Error deleting cover letter:", error);
             setAlertMessage("Failed to delete cover letter");
-            setAlert("failure");
+            setAlert("failed");
         }
 
         setCoverLetterToDelete(null);

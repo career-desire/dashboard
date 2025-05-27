@@ -1,7 +1,7 @@
 // This component handle authentication like login, logout, register and restore sessions
 
 import { createContext, useContext, useEffect, useState } from "react";
-import { checkLoginStatus, loginUser, logoutUser, registerUser } from "../services/authService";
+import { checkLoginStatus, loginUser, logoutUser } from "../services/authService";
 import { useLocation, useNavigate } from "react-router-dom";
 import { AlertContext } from "./AlertContext";
 
@@ -30,29 +30,6 @@ export const AuthProvider = ({ children }) => {
     restoreSession();
   }, []);
 
-  const register = async (registerForm) => {
-    try {
-      const registerData = await registerUser(registerForm);
-
-      if (registerData?.accessToken) {
-        setToken(registerData.accessToken);
-        setUser(registerData.user);
-        setAlert("success");
-        setAlertMessage("Registered successfully!");
-        navigate("/");
-      }
-    } catch (error) {
-      console.error("Registration error:", error);
-
-      const errorMessage =
-        error?.response?.data?.message || error.message || "Registration failed. Please try again.";
-
-      setAlert("failure");
-      setAlertMessage(errorMessage);
-      throw new Error(errorMessage);
-    }
-  };
-
   const login = async (loginForm) => {
     try {
       const loginData = await loginUser(loginForm, setToken);
@@ -67,7 +44,7 @@ export const AuthProvider = ({ children }) => {
       }
     } catch (error) {
       console.error("Login failed:", error.message || error);
-      setAlert("failure")
+      setAlert("failed")
       setAlertMessage(`${error.message || error}!`)
       throw new Error(error.message || "Login failed. Please try again.");
     }
@@ -82,13 +59,13 @@ export const AuthProvider = ({ children }) => {
       setAlertMessage("Logout successfully!");
       navigate("/");
     } catch (error) {
-      setAlert("failure")
+      setAlert("failed")
       setAlertMessage(`${error.message || error}!`)
     }
   };
 
   return (
-    <AuthContext.Provider value={{ user, loading, token, register, login, logout }}>
+    <AuthContext.Provider value={{ user, setUser, loading, token, login, logout }}>
       {children}
     </AuthContext.Provider>
   );

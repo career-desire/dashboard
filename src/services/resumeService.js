@@ -45,7 +45,7 @@ export const saveResume = async (resume, setAlert, setAlertMessage, setResume) =
         setResume(response.data);
         return response.data;
     } catch (error) {
-        setAlert("failure");
+        setAlert("failed");
         setAlertMessage("Resume Not Saved!");
         throw error.response?.data?.message || "Failed to save resume.";
     }
@@ -81,7 +81,7 @@ export const updateResume = async (id, updatedResume, setAlert, setAlertMessage,
         setResume(response.data)
         return response.data;
     } catch (error) {
-        setAlert("failure")
+        setAlert("failed")
         setAlertMessage("Resume Not Updated!")
         throw error.response?.data?.message || "Failed to update resume.";
     }

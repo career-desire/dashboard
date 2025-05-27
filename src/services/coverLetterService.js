@@ -41,7 +41,7 @@ export const saveCoverLetter = async (coverLetter, setAlert, setAlertMessage) =>
         setAlertMessage("Cover Letter Saved!");
         return response.data
     } catch (error) {
-        setAlert("failure")
+        setAlert("failed")
         setAlertMessage("Cover Letter Not Saved!");
         throw error.response?.data?.message || "Failed to save resume.  "
     }
@@ -74,7 +74,7 @@ export const updateCoverLetter = async (id, updatedCoverLetter, setAlert, setAle
         setCoverLetter(response.data);
         return response.data;
     } catch (error) {
-        setAlert("Failure")
+        setAlert("failed")
         setAlertMessage("Cover Letter Not Updated!")
         throw error.response?.data?.message || "Failed to update cover letter"
     }

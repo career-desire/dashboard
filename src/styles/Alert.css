@@ -29,7 +29,7 @@
     border: 1px solid green;
 }
 
-.failure-alert {
+.failed-alert {
     color: #C40C0C;
     border: 1px solid #C40C0C;
 }

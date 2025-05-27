@@ -8,18 +8,24 @@ import { ResumeProvider } from './context/ResumeContext.jsx'
 import Alert from './layout/Alert.jsx'
 import { BrowserRouter } from 'react-router-dom'
 import CoverLetterProvider from './context/CoverLetterContext.jsx'
+import { RegisterProvider } from './context/RegisterContext.jsx'
+import { ForgotProvider } from './context/ForgotContext.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
       <AlertProvider>
         <AuthProvider>
-          <ResumeProvider>
-            <CoverLetterProvider>
-              <App />
-              <Alert />
-            </CoverLetterProvider>
-          </ResumeProvider>
+          <RegisterProvider>
+            <ForgotProvider>
+              <ResumeProvider>
+                <CoverLetterProvider>
+                  <App />
+                  <Alert />
+                </CoverLetterProvider>
+              </ResumeProvider>
+            </ForgotProvider>
+          </RegisterProvider>
         </AuthProvider>
       </AlertProvider>
     </BrowserRouter>
