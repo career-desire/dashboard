@@ -94,11 +94,11 @@ const Home = () => {
                     </div>
                     <div className="home-nav-link">
                         <img src={CoverLetterIcon} alt="resume icon" />
-                        <Link to="/">Resume builder</Link>
+                        <Link to="https://resume.careerdesire.in" target="_blank">Resume builder</Link>
                     </div>
                     <div className="home-nav-link">
                         <img src={CoverLetterIcon} alt="cover letter icon" />
-                        <Link to="/">Cover letter builder</Link>
+                        <Link to="https://cover-letter.careerdesire.in" target="_blank">Cover letter builder</Link>
                     </div>
                     <div className="home-nav-link">
                         <FontAwesomeIcon icon={faFolderOpen} />
@@ -119,8 +119,8 @@ const Home = () => {
                             <p className="dropdown"><FontAwesomeIcon icon={faCaretDown} /></p>
                         </div>
                         <div className="create-new-options">
-                            <p><Link to="/">Resume</Link></p>
-                            <p><Link to="/">Cover Letter</Link></p>
+                            <p><Link to="https://resume.careerdesire.in" target="_blank">Resume</Link></p>
+                            <p><Link to="https://cover-letter.careerdesire.in" target="_blank">Cover Letter</Link></p>
                         </div>
                     </div>
                 </div>

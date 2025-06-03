@@ -1,9 +1,10 @@
-import React, { useState, useEffect, createContext, useContext } from 'react'
+import { useState, useEffect, createContext, useContext } from 'react'
 import axios from "axios";
 import { auth } from "../services/firebase";
 import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 import { AlertContext } from "./AlertContext";
 import { AuthContext } from './AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 export const RegisterContext = createContext();
 
@@ -16,6 +17,7 @@ export function RegisterProvider({ children }) {
     const [canResend, setCanResend] = useState(false);
     const { setAlert, setAlertMessage } = useContext(AlertContext);
     const { setUser } = useContext(AuthContext)
+    const navigate = useNavigate();
 
     const SERVER_URL = import.meta.env.VITE_SERVER_URL;
 

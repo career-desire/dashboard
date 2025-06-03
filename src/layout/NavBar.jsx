@@ -37,7 +37,7 @@ function NavBar() {
 
   return (
     <nav className="nav-bar">
-      <Link to="/">
+      <Link to="https://careerdesire.in" target="_blank">
         <img src={cdLogo} alt="Career desire logo" className="logo-img" />
       </Link>
       <div className="nav-options">
