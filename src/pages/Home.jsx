@@ -10,7 +10,7 @@ import CoverLetterPreview from "/images/cd-cover-letter-preview.png";
 import CoverLetterIcon from "/images/icons/cover-letter-ico.png";
 import Warning from "../layout/Warning.jsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCaretDown, faCircleUser, faFolderOpen, faHouse, faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faCaretDown, faCircleUser, faFolderOpen, faHouse, faLink, faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { CoverLetterContext } from "../context/CoverLetterContext.jsx";
 import { AlertContext } from "../context/AlertContext.jsx";
 import { deleteResume } from "../services/resumeService.js";
@@ -72,6 +72,29 @@ const Home = () => {
 
         setCoverLetterToDelete(null);
     };
+
+    const handleResumeCopyLink = (id) => {
+        const shareURL = `${import.meta.env.VITE_RESUME_BUILDER_URL}/view-resume/${id}`;
+        navigator.clipboard.writeText(shareURL).then(() => {
+            setAlertMessage("Share link copied!");
+            setAlert("success");
+        }).catch(() => {
+            setAlertMessage("Failed to copy link.");
+            setAlert("failed");
+        });
+    };
+
+    const handleCoverLetterCopyLink = (id) => {
+        const shareURL = `${import.meta.env.VITE_COVER_LETTER_BUILDER_URL}/view-cover-letter/${id}`;
+        navigator.clipboard.writeText(shareURL).then(() => {
+            setAlertMessage("Share link copied!");
+            setAlert("success");
+        }).catch(() => {
+            setAlertMessage("Failed to copy link.");
+            setAlert("failed");
+        });
+    };
+
 
     return (
         <div className="home-container">
@@ -135,9 +158,10 @@ const Home = () => {
                                         <img src={ResumePreview} alt="Career desire resume icon" className="preview-img" />
                                         <p>{`Resume ${index + 1}`}</p>
                                         <div className="preview-options">
-                                            <Link to={`${import.meta.env.VITE_RESUME_BUILDER_URL}/${resume._id}`} target="_blank">
+                                            <Link to={`${import.meta.env.VITE_RESUME_BUILDER_URL}/resume/${resume._id}`} target="_blank">
                                                 <p><FontAwesomeIcon icon={faPen} /></p>
                                             </Link>
+                                            <p onClick={() => handleResumeCopyLink(resume._id)}><FontAwesomeIcon icon={faLink} /></p>
                                             <p className="delete-resume" onClick={() => setResumeToDelete(index)}>
                                                 <FontAwesomeIcon icon={faTrash} />
                                             </p>
@@ -157,9 +181,10 @@ const Home = () => {
                                         <img src={CoverLetterPreview} alt="Career desire cover letter icon" className="preview-img" />
                                         <p>{`Cover Letter ${index + 1}`}</p>
                                         <div className="preview-options">
-                                            <Link to={`${import.meta.env.VITE_COVER_LETTER_BUILDER_URL}/${coverLetter._id}`} target="_blank">
+                                            <Link to={`${import.meta.env.VITE_COVER_LETTER_BUILDER_URL}/cover-letter/${coverLetter._id}`} target="_blank">
                                                 <p><FontAwesomeIcon icon={faPen} /></p>
                                             </Link>
+                                            <p onClick={() => handleCoverLetterCopyLink(coverLetter._id)}><FontAwesomeIcon icon={faLink} /></p>
                                             <p className="delete-resume" onClick={() => setCoverLetterToDelete(index)}>
                                                 <FontAwesomeIcon icon={faTrash} />
                                             </p>
