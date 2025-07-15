@@ -1,36 +1,41 @@
 .home-container {
-    max-width: 100%;
-    display: flex;
+    width: 100%;
     margin-top: 60px;
+    display: flex;
+    position: relative;
 }
 
 .home-nav-container {
-    position: fixed;
-    top: 60px;
+    position: absolute;
+    top: 0;
     left: 0;
     min-width: 250px;
+    height: calc(100dvh - 60px);
     background-color: #FFF;
-    height: calc(100vh);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    padding-bottom: 20px;
     z-index: 30;
-    transition: all ease-in-out 700ms;
+    transition: all ease-in-out 300ms;
     -webkit-box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.5);
     -moz-box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.5);
     box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.5);
 }
 
-#home-nav-close {
-    position: fixed;
-    top: 60px;
+.home-nav-container.close {
+    top: 0;
     left: -250px;
 }
 
-.home-nav-icon {
+.nav-menu-icon {
     position: absolute;
     top: 20px;
     left: 240px;
     background-color: #FFF;
     text-align: center;
-    padding: 15px 15px 15px 20px;
+    padding: 15px 15px 15px 23px;
     border-radius: 5px;
     font-weight: 700;
     -webkit-box-shadow: 1.5px 0px 1px rgba(0, 0, 0, 0.3);
@@ -47,7 +52,10 @@
     align-items: flex-start;
     justify-content: flex-start;
     flex-direction: column;
+    overflow: auto;
+    scrollbar-width: none;
     gap: 20px;
+    padding-bottom: 15px;
 }
 
 .home-container .profile-container {
@@ -67,32 +75,38 @@
     color: #266CA9;
 }
 
-.home-nav-link {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
+.home-nav-container .upgrade-option {
+    padding: 20px 47px;
+    border-radius: 10px;
+    background: #373B44;
+    background: -webkit-linear-gradient(to bottom, #4286f4, #373B44);
+    background: linear-gradient(to bottom, #4286f4, #373B44);
+    border: 1px solid #000;
+    transition: all ease-in-out 300ms;
+}
+
+.home-nav-container .upgrade-option .upgrade-btn {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 10px;
     cursor: pointer;
-    margin-left: 20px;
 }
 
-.home-nav-link img {
-    width: 15px;
-}
-
-.home-nav-link a {
+.home-nav-link {
     color: #000;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 5px;
-    transition: all ease-in-out 200ms;
+    gap: 10px;
+    cursor: pointer;
+    margin-left: 20px;
+    transition: all ease-in-out 300ms;
 }
 
-.home-nav-link:hover a {
+.home-nav-link:hover {
     color: #266CA9;
     transform: scale(1.03);
-    transition: all ease-in-out 200ms;
+    transition: all ease-in-out 300ms;
 }
 
 .home-body-container {
@@ -103,10 +117,10 @@
     align-items: center;
     justify-content: flex-start;
     overflow: auto;
-    transition: all ease-in-out 700ms;
+    transition: all ease-in-out 300ms;
 }
 
-#home-body-open {
+.home-body-container.open {
     margin-left: 250px;
 }
 
@@ -129,17 +143,17 @@
 }
 
 .create-btn {
-    width: 175px;
+    width: 100%;
     background-color: #266CA9;
     color: #FFF;
     border-radius: 10px;
-    transition: all ease-in-out 200ms;
+    transition: all ease-in-out 300ms;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 5px;
-    padding: 10px;
+    padding: 15px 10px;
 }
 
 .create-btn>p>span {
@@ -153,48 +167,10 @@
     transform: scale(1.01);
 }
 
-.create-btn .dropdown {
-    padding: 10px;
-    margin-left: 5px;
-    border-left: 1px solid #cdcdcd;
-}
-
-.create-btns {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-}
-
-.create-new-options {
-    display: none;
-    position: absolute;
-    top: 100%;
-    right: 0;
-    padding: 1rem;
-    background-color: #fff;
-    border-radius: 4px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.create-new-options p>a {
-    color: #000;
-}
-
-.create-new-options p>a:hover {
-    color: #266CA9;
-}
-
-.create-btns:hover .create-new-options {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-}
-
 .home-body {
     width: 100%;
-    margin-bottom: 6rem;
+    height: 100%;
+    /* margin-bottom: 6rem; */
 }
 
 .home-body .preview-container {
@@ -230,27 +206,16 @@
     width: 80px;
 }
 
-.home-body .not-found img {
-    width: 500px;
-    margin-top: 50px;
-}
-
-.resume-loader {
+.home-body .not-found {
     width: 100%;
-    height: 90vh;
+    height: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    flex-direction: column;
 }
 
-.resume-loader .loader {
-    width: 50px;
-    height: 50px;
-    border: 5px solid #f3f3f3;
-    border-top: 5px solid #266CA9;
-    background-color: transparent;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
+.home-body .not-found img {
+    max-width: 500px;
 }
 
 .home-body .preview .preview-options {
@@ -275,17 +240,11 @@
     gap: 20px;
 }
 
-.home-body #react-doc-viewer {
-    padding: 0 !important;
-    width: 350px !important;
-    height: 350px !important;
-}
-
 .home-body .preview-options p {
     color: #fff;
     font-size: 1em;
     text-shadow: 0 0 3px #fff;
-    transition: all ease-in-out 0.3s;
+    transition: all ease-in-out 300ms;
 }
 
 .home-body .preview-options p:hover {
@@ -315,15 +274,13 @@
 
     .home-nav-container {
         width: 330px;
-        top: 80px;
     }
 
-    #home-nav-close {
-        top: 80px;
+    .home-nav-container.close {
         left: -330px;
     }
 
-    .home-nav-icon {
+    .nav-menu-icon {
         left: 320px;
     }
 
@@ -341,7 +298,7 @@
         font-size: 0.9rem;
     }
 
-    #home-body-open {
+    .home-body-container.open {
         margin-left: 0;
     }
 }
@@ -359,20 +316,11 @@
     }
 
     .home-nav-container {
-        top: 50px;
-    }
-
-    #home-nav-close {
-        top: 50px;
+        height: calc(100dvh - 50px);
     }
 
     .home-header {
         margin-top: 30px;
-    }
-
-    .home-body #react-doc-viewer {
-        width: 300px !important;
-        height: 300px !important;
     }
 
     .home-body .preview-img {
@@ -381,6 +329,5 @@
 
     .home-body .not-found img {
         width: 70%;
-        margin-top: -40px;
     }
 }

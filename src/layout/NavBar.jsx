@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState, useRef } from "react";
+import { useContext, useEffect, useState, useRef } from "react";
 import "../styles/NavBar.css";
 import cdLogo from "/images/CD_Logo.svg";
 import Warning from "./Warning.jsx";
@@ -7,10 +7,11 @@ import { AuthContext } from "../context/AuthContext.jsx";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRightFromBracket, faUser } from "@fortawesome/free-solid-svg-icons";
 import { useResumeData } from "../context/ResumeContext.jsx";
+import PremiumIcon from "/images/premium-icon.webp"
 
 function NavBar() {
   const { logout, user } = useContext(AuthContext);
-  const { setResume, getInitialResume} = useResumeData();
+  const { setResume, getInitialResume } = useResumeData();
   const [handleLogout, setHandleLogout] = useState(false);
   const [islogout, setIsLogout] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
@@ -42,25 +43,29 @@ function NavBar() {
       </Link>
       <div className="nav-options">
         <div className="btn-container">
+          <a href="https://careerdesire.in/Pricing" target="_blank" className="premium-btn">
+            <img src={PremiumIcon} alt="Premium icon" className="premium-icon" />
+            Premium
+          </a>
           {!user && <Link to="/login"><button className="auth-btn">Login</button></Link>}
           {user && (
             <div ref={profileRef} className="profile-container" id={isProfileOpen ? "profile-open" : "profile-close"}>
               <div className="profile-icon" onClick={() => setIsProfileOpen(!isProfileOpen)}>
                 <FontAwesomeIcon icon={faUser} />
               </div>
-                <div className="profile-options">
-                  <Link to="/"><p>Profile</p></Link>
-                  <div className="logout-container" onClick={() => setHandleLogout(true)}>
-                    <p>Logout</p>
-                    <FontAwesomeIcon icon={faRightFromBracket} />
-                  </div>
+              <div className="profile-options">
+                <Link to="/"><p>Profile</p></Link>
+                <div className="logout-container" onClick={() => setHandleLogout(true)}>
+                  <p>Logout</p>
+                  <FontAwesomeIcon icon={faRightFromBracket} />
                 </div>
+              </div>
             </div>
           )}
         </div>
       </div>
       {handleLogout && (
-        <Warning 
+        <Warning
           warnText="Are you sure you want to log out?"
           actionTextOne="Yes"
           cancelText="No"
