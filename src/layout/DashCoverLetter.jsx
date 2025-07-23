@@ -60,7 +60,7 @@ function DashCoverLetter() {
 
                 {allCoverLetter.length > 0 && (
                     <div className="preview-container">
-                        <h2>Your Cover Letter</h2>
+                        <h2 className='preview-title'>Your Cover Letter</h2>
                         <div className="preview">
                             {allCoverLetter.map((coverLetter, index) => (
                                 <div key={index}>

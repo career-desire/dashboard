@@ -1,6 +1,6 @@
 .not-found-page {
     width: 100%;
-    height: calc(100vh - 150px);
+    height: calc(100dvh - 150px);
     display: flex;
     align-items: center;
     justify-content: center;

@@ -59,7 +59,7 @@ function DashResume() {
             <div className="home-body">
                 {allResume.length > 0 && (
                     <div className="preview-container">
-                        <h2>Your Resumes</h2>
+                        <h2 className='preview-title'>Your Resumes</h2>
                         <div className="preview">
                             {allResume.map((resume, index) => (
                                 <div key={index}>
