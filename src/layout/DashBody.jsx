@@ -1,3 +1,5 @@
+import DashFooter from "./DashFooter";
+
 function DashBody({ user }) {
     return (
         <>
@@ -17,9 +19,7 @@ function DashBody({ user }) {
                     </div>
                 </div>
             </div>
-            <div className="grid-item personalized-resume">
-                <strong>Need a tailored resume?</strong> Reach out to us for a <b>personalized resume service</b>.
-            </div>
+            <DashFooter />
         </>
     );
 }
